@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../category';
+import { CATEGORIES } from '../__mocks__/mock-categories';
 
 @Component({
   selector: 'app-categories',
@@ -7,12 +8,14 @@ import { Category } from '../category';
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
-  category: Category = {
-    id: 1,
-    name: 'Tablet',
-  };
+  categoriesList = CATEGORIES;
+  selectedCategory?: Category;
 
   constructor() {}
+
+  onSelectCategory(category: Category): void {
+    this.selectedCategory = category;
+  }
 
   ngOnInit(): void {}
 }
