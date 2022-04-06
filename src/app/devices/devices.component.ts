@@ -9,16 +9,11 @@ import { DevicesService } from '../devices.service';
 })
 export class DevicesComponent implements OnInit {
   devicesList: Device[] = [];
-  selectedDevice?: Device;
 
   constructor(private devicesService: DevicesService) {}
 
   ngOnInit(): void {
     this.getDevices();
-  }
-
-  onSelectDevice(device: Device): void {
-    this.selectedDevice = device;
   }
 
   getDevices(): void {
