@@ -22,6 +22,10 @@ export class CategoryDetailComponent implements OnInit {
     this.getCategory();
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
   getCategory(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.categoriesService
