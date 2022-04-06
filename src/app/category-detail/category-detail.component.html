@@ -1,0 +1,12 @@
+<div *ngIf="category">
+  <h2>{{ category.name | uppercase }} details</h2>
+  <div><span>id: </span>{{ category.id }}</div>
+  <div>
+    <label for="category-name">Category name: </label>
+    <input
+      id="category-name"
+      [(ngModel)]="category.name"
+      placeholder="Category name"
+    />
+  </div>
+</div>
