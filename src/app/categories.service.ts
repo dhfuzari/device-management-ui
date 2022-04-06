@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Category } from './category';
 import { CATEGORIES } from './__mocks__/mock-categories';
 
@@ -8,7 +9,8 @@ import { CATEGORIES } from './__mocks__/mock-categories';
 export class CategoriesService {
   constructor() {}
 
-  getCategories(): Category[] {
-    return CATEGORIES;
+  getCategories(): Observable<Category[]> {
+    const categories = of(CATEGORIES);
+    return categories;
   }
 }

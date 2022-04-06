@@ -22,6 +22,8 @@ export class DevicesComponent implements OnInit {
   }
 
   getDevices(): void {
-    this.devicesList = this.devicesService.getDevices();
+    this.devicesService
+      .getDevices()
+      .subscribe((devices) => (this.devicesList = devices));
   }
 }

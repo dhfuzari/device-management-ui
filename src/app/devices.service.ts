@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Device } from './device';
 import { DEVICES } from './__mocks__/mock-devices';
 
@@ -8,7 +9,8 @@ import { DEVICES } from './__mocks__/mock-devices';
 export class DevicesService {
   constructor() {}
 
-  getDevices(): Device[] {
-    return DEVICES;
+  getDevices(): Observable<Device[]> {
+    const devices = of(DEVICES);
+    return devices;
   }
 }
