@@ -1,0 +1,22 @@
+<h2>{{ device.partNumber }} Details</h2>
+<div><span>id: </span>{{ device.id }}</div>
+<div>
+  <label for="partNumber">Device part number: </label>
+  <input
+    id="partNumber"
+    [(ngModel)]="device.partNumber"
+    placeholder="partNumber"
+  />
+</div>
+<div>
+  <label for="color">Device color: </label>
+  <input id="color" [(ngModel)]="device.color" placeholder="color" />
+</div>
+<div>
+  <label for="categories_id">Device categories_id: </label>
+  <input
+    id="categories_id"
+    [(ngModel)]="device.categories_id"
+    placeholder="categories_id"
+  />
+</div>
