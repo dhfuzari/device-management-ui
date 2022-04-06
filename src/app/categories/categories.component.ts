@@ -8,16 +8,11 @@ import { CategoriesService } from '../categories.service';
 })
 export class CategoriesComponent implements OnInit {
   categoriesList: Category[] = [];
-  selectedCategory?: Category;
 
   constructor(private categoriesService: CategoriesService) {}
 
   ngOnInit(): void {
     this.getCategories();
-  }
-
-  onSelectCategory(category: Category): void {
-    this.selectedCategory = category;
   }
 
   getCategories(): void {
