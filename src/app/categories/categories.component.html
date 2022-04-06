@@ -1,17 +1,5 @@
-<div *ngIf="selectedCategory">
-  <h2>{{ selectedCategory.name | uppercase }} details</h2>
-  <div><span>id: </span>{{ selectedCategory.id }}</div>
-  <div>
-    <label for="category-name">Category name: </label>
-    <input
-      id="category-name"
-      [(ngModel)]="selectedCategory.name"
-      placeholder="Category name"
-    />
-  </div>
-</div>
-
 <h2>Categories list</h2>
+
 <ul class="categories-list">
   <li *ngFor="let category of categoriesList">
     <button
@@ -24,3 +12,5 @@
     </button>
   </li>
 </ul>
+
+<app-category-detail [category]="selectedCategory"></app-category-detail>
