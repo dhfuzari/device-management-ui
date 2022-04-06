@@ -1,6 +1,6 @@
 import { Device } from '../device';
 
-export const CATEGORIES: Device[] = [
+export const DEVICES: Device[] = [
   { id: 1, partNumber: 12341, color: 'green', categories_id: 1 },
   { id: 2, partNumber: 12342, color: 'brown', categories_id: 2 },
   { id: 3, partNumber: 12343, color: 'gray', categories_id: 3 },

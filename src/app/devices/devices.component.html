@@ -1,22 +1,38 @@
-<h2>{{ device.partNumber }} Details</h2>
-<div><span>id: </span>{{ device.id }}</div>
-<div>
-  <label for="partNumber">Device part number: </label>
-  <input
-    id="partNumber"
-    [(ngModel)]="device.partNumber"
-    placeholder="partNumber"
-  />
+<div *ngIf="selectedDevice">
+  <h2>{{ selectedDevice.partNumber }} Details</h2>
+  <div><span>id: </span>{{ selectedDevice.id }}</div>
+  <div>
+    <label for="partNumber">Device part number: </label>
+    <input
+      id="partNumber"
+      [(ngModel)]="selectedDevice.partNumber"
+      placeholder="partNumber"
+    />
+  </div>
+  <div>
+    <label for="color">Device color: </label>
+    <input id="color" [(ngModel)]="selectedDevice.color" placeholder="color" />
+  </div>
+  <div>
+    <label for="categories_id">Device categories_id: </label>
+    <input
+      id="categories_id"
+      [(ngModel)]="selectedDevice.categories_id"
+      placeholder="categories_id"
+    />
+  </div>
 </div>
-<div>
-  <label for="color">Device color: </label>
-  <input id="color" [(ngModel)]="device.color" placeholder="color" />
-</div>
-<div>
-  <label for="categories_id">Device categories_id: </label>
-  <input
-    id="categories_id"
-    [(ngModel)]="device.categories_id"
-    placeholder="categories_id"
-  />
-</div>
+
+<h2>Devices list</h2>
+<ul class="devices-list">
+  <li *ngFor="let device of devicesList">
+    <button
+      type="button"
+      [class.selected]="device === selectedDevice"
+      (click)="onSelectDevice(device)"
+    >
+      <span class="badge">{{ device.id }}</span>
+      <span class="name">{{ device.partNumber }}</span>
+    </button>
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '../device';
+import { DEVICES } from '../__mocks__/mock-devices';
 
 @Component({
   selector: 'app-devices',
@@ -7,14 +8,14 @@ import { Device } from '../device';
   styleUrls: ['./devices.component.css'],
 })
 export class DevicesComponent implements OnInit {
-  device: Device = {
-    id: 1,
-    categories_id: 1,
-    color: 'green',
-    partNumber: 1234,
-  };
+  devicesList = DEVICES;
+  selectedDevice?: Device;
 
   constructor() {}
+
+  onSelectDevice(device: Device): void {
+    this.selectedDevice = device;
+  }
 
   ngOnInit(): void {}
 }
