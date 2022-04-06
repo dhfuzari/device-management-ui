@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../category';
-import { CATEGORIES } from '../__mocks__/mock-categories';
-
+import { CategoriesService } from '../categories.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
-  categoriesList = CATEGORIES;
+  categoriesList: Category[] = [];
   selectedCategory?: Category;
 
-  constructor() {}
+  constructor(private categoriesService: CategoriesService) {}
+
+  ngOnInit(): void {
+    this.getCategories();
+  }
 
   onSelectCategory(category: Category): void {
     this.selectedCategory = category;
   }
 
-  ngOnInit(): void {}
+  getCategories(): void {
+    this.categoriesList = this.categoriesService.getCategories();
+  }
 }
