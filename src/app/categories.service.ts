@@ -14,8 +14,8 @@ export class CategoriesService {
     return categories;
   }
 
-  getCategory(id: number): Observable<Category | undefined> {
-    const category = CATEGORIES.find((category) => category.id === id);
+  getCategory(id: number): Observable<Category> {
+    const category = CATEGORIES.find((category) => category.id === id)!;
     return of(category);
   }
 }
