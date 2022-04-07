@@ -4,24 +4,30 @@
   <input id="new-device-part-number" #devicePartNumber />
   <label for="new-device-color">Device color: </label>
   <input id="new-device-color" #deviceColor />
-  <label for="new-device-color">Device categories id: </label>
-  <input id="new-device-color" #deviceCategoriesId />
-  <button
-    type="button"
-    class="add-button"
-    (click)="
-      addDevice(
-        devicePartNumber.value,
-        deviceColor.value,
-        deviceCategoriesId.value
-      );
-      devicePartNumber.value = '';
-      deviceColor.value = '';
-      deviceCategoriesId.value = ''
-    "
-  >
-    Add Device
-  </button>
+  <label for="new-device-category">Device category:</label>
+  <select id="new-device-category" #deviceCategoriesId>
+    <option *ngFor="let category of categoriesList" [value]="category.id">
+      {{ category.name }}
+    </option>
+  </select>
+  <div>
+    <button
+      type="button"
+      class="add-button"
+      (click)="
+        addDevice(
+          devicePartNumber.value,
+          deviceColor.value,
+          deviceCategoriesId.value
+        );
+        devicePartNumber.value = '';
+        deviceColor.value = '';
+        deviceCategoriesId.value = ''
+      "
+    >
+      Add Device
+    </button>
+  </div>
 </div>
 
 <h2>Devices list</h2>

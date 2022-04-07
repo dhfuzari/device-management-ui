@@ -19,7 +19,20 @@
       id="categories_id"
       [(ngModel)]="device.categories_id"
       placeholder="categories_id"
+      readonly
     />
+  </div>
+  <div>
+    <label for="categories_id">Device category:</label>
+    <select id="categories_id" [(ngModel)]="device.categories_id">
+      <option
+        *ngFor="let category of categoriesList"
+        [value]="category.id"
+        [attr.selected]="category.id == device.categories_id ? true : null"
+      >
+        {{ category.name }}
+      </option>
+    </select>
   </div>
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="saveDevice()">save</button>
