@@ -13,6 +13,15 @@ export class DevicesComponent implements OnInit {
   devicesList: Device[] = [];
   categoriesList: Category[] = [];
 
+  displayedColumns: string[] = [
+    'id',
+    'partNumber',
+    'color',
+    'categories_id',
+    'actions',
+  ];
+  dataSource = this.devicesList;
+
   constructor(
     private devicesService: DevicesService,
     private categoriesService: CategoriesService
