@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '../device';
 import { DevicesService } from '../devices.service';
+import { CategoriesService } from '../categories.service';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-devices',
@@ -9,17 +11,28 @@ import { DevicesService } from '../devices.service';
 })
 export class DevicesComponent implements OnInit {
   devicesList: Device[] = [];
+  categoriesList: Category[] = [];
 
-  constructor(private devicesService: DevicesService) {}
+  constructor(
+    private devicesService: DevicesService,
+    private categoriesService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
     this.getDevices();
+    this.getCategories();
   }
 
   getDevices(): void {
     this.devicesService
       .getDevices()
       .subscribe((devices) => (this.devicesList = devices.data));
+  }
+
+  getCategories(): void {
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories) => (this.categoriesList = categories.data));
   }
 
   addDevice(partNumber: string, color: string, categories_id: string): void {
