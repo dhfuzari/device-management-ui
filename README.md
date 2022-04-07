@@ -3,7 +3,7 @@
 This is CRUD like Angular App to perform CRUD operations on devices and categories entities. Click to access the [production buid](https://device-management-ui.herokuapp.com/dashboard). To get a development version that access a local api, you need to follow the instructions from this [repo](https://github.com/dhfuzari/device-management-be). In this other repo you'll find instructions to up and running a NodeJS/Express aplication which can perform CRUD operations in the categories and devices entities
 
 <div>
-  <img src="./assets/img/device-management-ui.PNG" alt="Postman Task Board Server public documentation" width="768">
+  <img src="./assets/img/device-management-ui.png" alt="Postman Task Board Server public documentation" width="768">
   <br>
 </div>
 
