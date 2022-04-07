@@ -33,6 +33,7 @@ export class CategoriesComponent implements OnInit {
       .addCategory({ name } as Category)
       .subscribe((category) => {
         this.categoriesList.push(category.data);
+        this.categoriesList = [...this.categoriesList];
       });
   }
 
@@ -41,7 +42,10 @@ export class CategoriesComponent implements OnInit {
       if (res && res.message) {
         this.categoriesList = this.categoriesList.filter((c) => c !== category);
       } else {
-        // TODO: Show message error to the user
+        // TODO: Show message error to the user in a toastr
+        window.alert(
+          "You can't remove this category. There are devices using it"
+        );
       }
     });
   }

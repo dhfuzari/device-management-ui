@@ -57,6 +57,7 @@ export class DevicesComponent implements OnInit {
       } as Device)
       .subscribe((device) => {
         this.devicesList.push(device.data);
+        this.devicesList = [...this.devicesList];
       });
   }
 
