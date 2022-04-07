@@ -33,4 +33,12 @@ export class CategoryDetailComponent implements OnInit {
       this.category = data;
     });
   }
+
+  saveCategory(): void {
+    if (this.category) {
+      this.categoriesService
+        .updateCategory(this.category)
+        .subscribe(() => this.goBack());
+    }
+  }
 }

@@ -10,6 +10,9 @@ import { environment } from '../environments/environment';
 })
 export class DevicesService {
   private devicesResourceURL = `${environment.apiURL}/devices`;
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -18,8 +21,15 @@ export class DevicesService {
   }
 
   getDevice(id: number): Observable<{ data: Device }> {
-    return this.http.get<{ data: Device }>(
-      `${environment.apiURL}/devices/${id}`
+    return this.http.get<{ data: Device }>(`${this.devicesResourceURL}/${id}`);
+  }
+
+  updateDevice(device: Device): Observable<any> {
+    const { id, partNumber, color, categories_id } = device;
+    return this.http.patch(
+      `${this.devicesResourceURL}/${id}`,
+      { color, partNumber, categories_id },
+      this.httpOptions
     );
   }
 }

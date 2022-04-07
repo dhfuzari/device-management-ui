@@ -33,4 +33,12 @@ export class DeviceDetailComponent implements OnInit {
       this.device = data;
     });
   }
+
+  saveDevice(): void {
+    if (this.device) {
+      this.devicesService
+        .updateDevice(this.device)
+        .subscribe(() => this.goBack());
+    }
+  }
 }

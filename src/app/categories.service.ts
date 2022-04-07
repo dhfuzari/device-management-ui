@@ -10,6 +10,9 @@ import { environment } from '../environments/environment';
 })
 export class CategoriesService {
   private categoriesResourceURL = `${environment.apiURL}/categories`;
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +22,16 @@ export class CategoriesService {
 
   getCategory(id: number): Observable<{ data: Category }> {
     return this.http.get<{ data: Category }>(
-      `${environment.apiURL}/categories/${id}`
+      `${this.categoriesResourceURL}/${id}`
+    );
+  }
+
+  updateCategory(category: Category): Observable<any> {
+    const { id, name } = category;
+    return this.http.patch(
+      `${this.categoriesResourceURL}/${id}`,
+      { name },
+      this.httpOptions
     );
   }
 }
