@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Category } from './category';
 import { environment } from '../environments/environment';
 
@@ -14,6 +15,14 @@ export class CategoriesService {
   };
 
   constructor(private http: HttpClient) {}
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+
+      return of(result as T);
+    };
+  }
 
   getCategories(): Observable<{ data: Category[] }> {
     return this.http.get<{ data: Category[] }>(this.categoriesResourceURL);
@@ -42,10 +51,14 @@ export class CategoriesService {
     );
   }
 
-  deleteCategory(id: number): Observable<Category> {
-    return this.http.delete<Category>(
-      `${this.categoriesResourceURL}/${id}`,
-      this.httpOptions
-    );
+  deleteCategory(id: number): Observable<{ message: string }> {
+    return this.http
+      .delete<{ message: string }>(
+        `${this.categoriesResourceURL}/${id}`,
+        this.httpOptions
+      )
+      .pipe(
+        catchError(this.handleError<{ message: string }>('deleteCategory'))
+      );
   }
 }
