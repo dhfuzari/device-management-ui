@@ -1,14 +1,24 @@
 <div *ngIf="category">
   <h2>{{ category.name | uppercase }} details</h2>
-  <div><span>id: </span>{{ category.id }}</div>
-  <div>
-    <label for="category-name">Category name: </label>
+
+  <mat-form-field appearance="fill" class="p-form-1">
+    <mat-label>Category name</mat-label>
     <input
+      matInput
       id="category-name"
       [(ngModel)]="category.name"
       placeholder="Category name"
     />
+  </mat-form-field>
+
+  <div>
+    <span class="m-form-1">
+      <button mat-raised-button (click)="goBack()">Go back</button>
+    </span>
+    <span class="m-form-1">
+      <button mat-raised-button color="primary" (click)="saveCategory()">
+        Save
+      </button>
+    </span>
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="saveCategory()">save</button>
 </div>

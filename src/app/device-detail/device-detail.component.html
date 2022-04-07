@@ -1,39 +1,58 @@
 <div *ngIf="device">
-  <h2>{{ device.partNumber }} Details</h2>
-  <div><span>id: </span>{{ device.id }}</div>
-  <div>
-    <label for="partNumber">Device part number: </label>
+  <h2>PN {{ device.partNumber }} Details</h2>
+
+  <mat-form-field appearance="fill" class="p-form-1">
+    <mat-label>Part number</mat-label>
     <input
+      matInput
       id="partNumber"
       [(ngModel)]="device.partNumber"
-      placeholder="partNumber"
+      placeholder="Part Number"
     />
-  </div>
-  <div>
-    <label for="color">Device color: </label>
-    <input id="color" [(ngModel)]="device.color" placeholder="color" />
-  </div>
-  <div>
-    <label for="categories_id">Device categories_id: </label>
+  </mat-form-field>
+
+  <mat-form-field
+    hintLabel="Max 16 characters"
+    appearance="fill"
+    class="p-form-1"
+  >
+    <mat-label>Enter color</mat-label>
     <input
+      matInput
+      #deviceColor
+      maxlength="16"
+      id="color"
+      [(ngModel)]="device.color"
+      placeholder="Color"
+    />
+    <mat-hint align="end">{{ deviceColor.value?.length || 0 }}/16</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="p-form-1">
+    <mat-label>Category</mat-label>
+    <mat-select
+      #deviceCategoriesId
       id="categories_id"
       [(ngModel)]="device.categories_id"
-      placeholder="categories_id"
-      readonly
-    />
-  </div>
-  <div>
-    <label for="categories_id">Device category:</label>
-    <select id="categories_id" [(ngModel)]="device.categories_id">
-      <option
+    >
+      <mat-option
         *ngFor="let category of categoriesList"
         [value]="category.id"
         [attr.selected]="category.id == device.categories_id ? true : null"
       >
         {{ category.name }}
-      </option>
-    </select>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div>
+    <span class="m-form-1">
+      <button mat-raised-button (click)="goBack()">Go back</button>
+    </span>
+    <span class="m-form-1">
+      <button mat-raised-button color="primary" (click)="saveDevice()">
+        Save
+      </button>
+    </span>
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="saveDevice()">save</button>
 </div>

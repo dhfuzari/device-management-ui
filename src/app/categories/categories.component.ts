@@ -11,6 +11,9 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private categoriesService: CategoriesService) {}
 
+  displayedColumns: string[] = ['id', 'name', 'actions'];
+  dataSource = this.categoriesList;
+
   ngOnInit(): void {
     this.getCategories();
   }
