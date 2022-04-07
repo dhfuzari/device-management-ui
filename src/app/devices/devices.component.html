@@ -1,3 +1,29 @@
+<h2>Add device</h2>
+<div>
+  <label for="new-device-part-number">Device part number: </label>
+  <input id="new-device-part-number" #devicePartNumber />
+  <label for="new-device-color">Device color: </label>
+  <input id="new-device-color" #deviceColor />
+  <label for="new-device-color">Device categories id: </label>
+  <input id="new-device-color" #deviceCategoriesId />
+  <button
+    type="button"
+    class="add-button"
+    (click)="
+      addDevice(
+        devicePartNumber.value,
+        deviceColor.value,
+        deviceCategoriesId.value
+      );
+      devicePartNumber.value = '';
+      deviceColor.value = '';
+      deviceCategoriesId.value = ''
+    "
+  >
+    Add Device
+  </button>
+</div>
+
 <h2>Devices list</h2>
 <ul class="devices-list">
   <li *ngFor="let device of devicesList">
@@ -5,5 +31,13 @@
       <span class="badge">{{ device.id }}</span>
       <span class="name">{{ device.partNumber }}</span>
     </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete device"
+      (click)="deleteDevice(device)"
+    >
+      x
+    </button>
   </li>
 </ul>

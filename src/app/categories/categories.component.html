@@ -1,3 +1,17 @@
+<h2>Add category</h2>
+
+<div>
+  <label for="new-category">Category name: </label>
+  <input id="new-category" #categoryName />
+  <button
+    type="button"
+    class="add-button"
+    (click)="addCategory(categoryName.value); categoryName.value = ''"
+  >
+    Add Category
+  </button>
+</div>
+
 <h2>Categories list</h2>
 
 <ul class="categories-list">
@@ -6,5 +20,13 @@
       <span class="badge">{{ category.id }}</span>
       <span class="name">{{ category.name }}</span>
     </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete category"
+      (click)="deleteCategory(category)"
+    >
+      x
+    </button>
   </li>
 </ul>

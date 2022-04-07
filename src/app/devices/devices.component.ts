@@ -19,6 +19,27 @@ export class DevicesComponent implements OnInit {
   getDevices(): void {
     this.devicesService
       .getDevices()
-      .subscribe((devices) => (this.devicesList = devices));
+      .subscribe((devices) => (this.devicesList = devices.data));
+  }
+
+  addDevice(partNumber: string, color: string, categories_id: string): void {
+    color = color.trim();
+    if (!partNumber) {
+      return;
+    }
+    this.devicesService
+      .addDevice({
+        color,
+        partNumber: Number(partNumber),
+        categories_id: Number(categories_id),
+      } as Device)
+      .subscribe((device) => {
+        this.devicesList.push(device.data);
+      });
+  }
+
+  deleteDevice(device: Device): void {
+    this.devicesList = this.devicesList.filter((d) => d !== device);
+    this.devicesService.deleteDevice(device.id).subscribe();
   }
 }
