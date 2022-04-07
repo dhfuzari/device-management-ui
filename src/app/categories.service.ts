@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Category } from './category';
-import { CATEGORIES } from './__mocks__/mock-categories';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -31,6 +30,14 @@ export class CategoriesService {
     return this.http.patch(
       `${this.categoriesResourceURL}/${id}`,
       { name },
+      this.httpOptions
+    );
+  }
+
+  addCategory(category: Category): Observable<{ data: Category }> {
+    return this.http.post<{ data: Category }>(
+      this.categoriesResourceURL,
+      category,
       this.httpOptions
     );
   }

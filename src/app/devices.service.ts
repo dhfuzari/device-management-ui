@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Device } from './device';
-import { DEVICES } from './__mocks__/mock-devices';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -29,6 +28,14 @@ export class DevicesService {
     return this.http.patch(
       `${this.devicesResourceURL}/${id}`,
       { color, partNumber, categories_id },
+      this.httpOptions
+    );
+  }
+
+  addDevice(device: Device): Observable<{ data: Device }> {
+    return this.http.post<{ data: Device }>(
+      this.devicesResourceURL,
+      device,
       this.httpOptions
     );
   }

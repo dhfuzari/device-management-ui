@@ -18,8 +18,18 @@ export class CategoriesComponent implements OnInit {
   getCategories(): void {
     this.categoriesService
       .getCategories()
-      .subscribe(
-        (categories) => (this.categoriesList = categories.data.slice(1, 5))
-      );
+      .subscribe((categories) => (this.categoriesList = categories.data));
+  }
+
+  addCategory(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    this.categoriesService
+      .addCategory({ name } as Category)
+      .subscribe((category) => {
+        this.categoriesList.push(category.data);
+      });
   }
 }
