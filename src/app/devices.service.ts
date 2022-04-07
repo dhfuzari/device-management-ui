@@ -39,4 +39,11 @@ export class DevicesService {
       this.httpOptions
     );
   }
+
+  deleteDevice(id: number): Observable<Device> {
+    return this.http.delete<Device>(
+      `${this.devicesResourceURL}/${id}`,
+      this.httpOptions
+    );
+  }
 }

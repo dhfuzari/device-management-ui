@@ -41,4 +41,11 @@ export class CategoriesService {
       this.httpOptions
     );
   }
+
+  deleteCategory(id: number): Observable<Category> {
+    return this.http.delete<Category>(
+      `${this.categoriesResourceURL}/${id}`,
+      this.httpOptions
+    );
+  }
 }

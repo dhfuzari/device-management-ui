@@ -32,4 +32,9 @@ export class CategoriesComponent implements OnInit {
         this.categoriesList.push(category.data);
       });
   }
+
+  deleteCategory(category: Category): void {
+    this.categoriesList = this.categoriesList.filter((c) => c !== category);
+    this.categoriesService.deleteCategory(category.id).subscribe();
+  }
 }

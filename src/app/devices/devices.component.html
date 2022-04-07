@@ -31,5 +31,13 @@
       <span class="badge">{{ device.id }}</span>
       <span class="name">{{ device.partNumber }}</span>
     </a>
+    <button
+      type="button"
+      class="delete"
+      title="delete device"
+      (click)="deleteDevice(device)"
+    >
+      x
+    </button>
   </li>
 </ul>

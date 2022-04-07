@@ -37,4 +37,9 @@ export class DevicesComponent implements OnInit {
         this.devicesList.push(device.data);
       });
   }
+
+  deleteDevice(device: Device): void {
+    this.devicesList = this.devicesList.filter((d) => d !== device);
+    this.devicesService.deleteDevice(device.id).subscribe();
+  }
 }
