@@ -1,4 +1,6 @@
-<h2>Add device</h2>
+<h1 class="mat-h1">Categories</h1>
+
+<h2 class="mat-h2">Add device</h2>
 <div>
   <label for="new-device-part-number">Device part number: </label>
   <input id="new-device-part-number" #devicePartNumber />
@@ -30,7 +32,7 @@
   </div>
 </div>
 
-<h2>Devices list</h2>
+<h2 class="mat-h2">Devices list</h2>
 <ul class="devices-list">
   <li *ngFor="let device of devicesList">
     <a routerLink="/device-detail/{{ device.id }}">

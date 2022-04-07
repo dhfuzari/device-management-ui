@@ -1,16 +1,30 @@
 <h2>Top Devices</h2>
-<div class="devices-menu">
-  <a *ngFor="let device of devices" routerLink="/device-detail/{{ device.id }}">
-    {{ device.partNumber }}
-  </a>
+<div>
+  <mat-card class="dashboard-card" *ngFor="let device of devices">
+    <mat-card-subtitle>device</mat-card-subtitle>
+    <mat-card-title>PN: {{ device.partNumber }}</mat-card-title>
+    <mat-card-content>
+      <p>Device {{ device.partNumber }} has {{ device.color }} color</p>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <a mat-button routerLink="/device-detail/{{ device.id }}"> DETAILS </a>
+    </mat-card-actions>
+    <mat-card-footer> </mat-card-footer>
+  </mat-card>
 </div>
 
 <h2>Top Categories</h2>
-<div class="devices-menu">
-  <a
-    *ngFor="let category of categories"
-    routerLink="/category-detail/{{ category.id }}"
-  >
-    {{ category.name }}
-  </a>
+<div>
+  <mat-card class="dashboard-card" *ngFor="let category of categories">
+    <mat-card-subtitle>category</mat-card-subtitle>
+    <mat-card-title>{{ category.name }}</mat-card-title>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <a mat-button routerLink="/category-detail/{{ category.id }}">
+        DETAILS
+      </a>
+    </mat-card-actions>
+    <mat-card-footer> </mat-card-footer>
+  </mat-card>
 </div>
