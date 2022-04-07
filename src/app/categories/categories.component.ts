@@ -37,7 +37,12 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteCategory(category: Category): void {
-    this.categoriesList = this.categoriesList.filter((c) => c !== category);
-    this.categoriesService.deleteCategory(category.id).subscribe();
+    this.categoriesService.deleteCategory(category.id).subscribe((res) => {
+      if (res && res.message) {
+        this.categoriesList = this.categoriesList.filter((c) => c !== category);
+      } else {
+        // TODO: Show message error to the user
+      }
+    });
   }
 }
