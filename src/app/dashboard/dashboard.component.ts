@@ -26,12 +26,14 @@ export class DashboardComponent implements OnInit {
   getDevices(): void {
     this.deviceService
       .getDevices()
-      .subscribe((devices) => (this.devices = devices.slice(1, 5)));
+      .subscribe((devices) => (this.devices = devices.data.slice(1, 5)));
   }
 
   getCategories(): void {
     this.categoriesService
       .getCategories()
-      .subscribe((categories) => (this.categories = categories.slice(1, 5)));
+      .subscribe(
+        (categories) => (this.categories = categories.data.slice(1, 5))
+      );
   }
 }

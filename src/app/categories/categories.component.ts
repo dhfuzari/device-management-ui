@@ -18,6 +18,8 @@ export class CategoriesComponent implements OnInit {
   getCategories(): void {
     this.categoriesService
       .getCategories()
-      .subscribe((categories) => (this.categoriesList = categories));
+      .subscribe(
+        (categories) => (this.categoriesList = categories.data.slice(1, 5))
+      );
   }
 }

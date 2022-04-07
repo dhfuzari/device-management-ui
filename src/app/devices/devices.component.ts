@@ -19,6 +19,6 @@ export class DevicesComponent implements OnInit {
   getDevices(): void {
     this.devicesService
       .getDevices()
-      .subscribe((devices) => (this.devicesList = devices));
+      .subscribe((devices) => (this.devicesList = devices.data.slice(1, 5)));
   }
 }
