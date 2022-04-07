@@ -12,15 +12,15 @@ import { Category } from '../category';
 export class DevicesComponent implements OnInit {
   devicesList: Device[] = [];
   categoriesList: Category[] = [];
+  dataSource: Device[] = [];
 
   displayedColumns: string[] = [
     'id',
     'partNumber',
     'color',
-    'categories_id',
+    'category',
     'actions',
   ];
-  dataSource = this.devicesList;
 
   constructor(
     private devicesService: DevicesService,
