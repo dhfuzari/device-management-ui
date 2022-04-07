@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { CategoriesService } from '../categories.service';
 import { Category } from '../category';
 
 @Component({
@@ -7,9 +10,26 @@ import { Category } from '../category';
   styleUrls: ['./category-detail.component.css'],
 })
 export class CategoryDetailComponent implements OnInit {
-  @Input() category?: Category;
+  category: Category | undefined;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private categoriesService: CategoriesService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCategory();
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  getCategory(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.categoriesService
+      .getCategory(id)
+      .subscribe((category) => (this.category = category));
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { DevicesService } from '../devices.service';
 import { Device } from '../device';
 
 @Component({
@@ -7,9 +10,26 @@ import { Device } from '../device';
   styleUrls: ['./device-detail.component.css'],
 })
 export class DeviceDetailComponent implements OnInit {
-  @Input() device?: Device;
+  device: Device | undefined;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private devicesService: DevicesService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getDevice();
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  getDevice(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.devicesService
+      .getDevice(id)
+      .subscribe((device) => (this.device = device));
+  }
 }

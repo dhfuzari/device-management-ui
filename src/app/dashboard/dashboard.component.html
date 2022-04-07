@@ -1,0 +1,16 @@
+<h2>Top Devices</h2>
+<div class="devices-menu">
+  <a *ngFor="let device of devices" routerLink="/device-detail/{{ device.id }}">
+    {{ device.partNumber }}
+  </a>
+</div>
+
+<h2>Top Categories</h2>
+<div class="devices-menu">
+  <a
+    *ngFor="let category of categories"
+    routerLink="/category-detail/{{ category.id }}"
+  >
+    {{ category.name }}
+  </a>
+</div>

@@ -13,4 +13,9 @@ export class DevicesService {
     const devices = of(DEVICES);
     return devices;
   }
+
+  getDevice(id: number): Observable<Device> {
+    const device = DEVICES.find((device) => device.id === id)!;
+    return of(device);
+  }
 }
